@@ -3,19 +3,13 @@
 #include "Coordinate.h"
 using namespace std;
 
-Coordinate::Coordinate(initializer_list<unsigned int> tpp) {
-	x = *tpp.begin();
-	y = *(tpp.begin() + 1);
-}
 
 unsigned int Coordinate::first() {
-	unsigned int s = *p.begin();
-	return s;	
+	return x;	
 }
 
 unsigned int Coordinate::second() {
-	unsigned int s = *(p.begin() + 1);
-	return s;
+	return y;
 }
 
 void Coordinate::setx(unsigned int xx) {

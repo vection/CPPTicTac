@@ -9,6 +9,7 @@ void TicTacToe::play(Player xPlayer,Player oPlayer) {
 	oPlayer.myChar = 'O';
 	bool gameover = false;
 	while (!gameover) {
+		cout << "Enter to loop";
 		turnX(xPlayer);
 		if (check_winner(xPlayer.myChar)) { win = xPlayer; gameover = true; }
 		turnY(oPlayer);

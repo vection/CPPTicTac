@@ -27,7 +27,7 @@ int main() {
 	YXPlayer player2;
 	IllegalPlayer player3;
 	ExceptionPlayer player4;
-
+	cout << "HERE";
 	playAndPrintResults(game, player1, player2);
 	/*
 	The final board is
@@ -88,8 +88,8 @@ int main() {
 	....
 	And the winner is YXPlayer, playing as O!
 	*/
-
-
+	int a;
+	cin >> a;
 	/*Champion champion;
 	playAndPrintWinner(game, champion, player1);
 	// The winner is <your name>, playing as X!

@@ -18,7 +18,10 @@ public:
 
 
 
-	Coordinate(initializer_list<unsigned int> t);
+	Coordinate(initializer_list<unsigned int> t) {
+		x = *t.begin();
+		y = *(t.begin() + 1);
+	}
 	unsigned int first();
 	unsigned int second();
 	void setx(unsigned int x);
