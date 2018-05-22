@@ -9,7 +9,6 @@ void TicTacToe::play(Player xPlayer,Player oPlayer) {
 	oPlayer.myChar = 'O';
 	bool gameover = false;
 	while (!gameover) {
-		cout << "Enter to loop";
 		turnX(xPlayer);
 		if (check_winner(xPlayer.myChar)) { win = xPlayer; gameover = true; }
 		turnY(oPlayer);
@@ -18,55 +17,54 @@ void TicTacToe::play(Player xPlayer,Player oPlayer) {
 }
 
 bool TicTacToe::check_winner(char c) {
-	if (check_rows(c) || check_angle(c) || check_colums(c)) { return true; }
+	if (check_rows(c)) { return true; }
 	else { return false; }
 }
 
 bool TicTacToe::check_rows(char c) {
 	int counter = 0;
-	Coordinate p{0, 0};
 	for (uint i = 0; i < game.size(); i++) {
-		p.setx(i);
-		for (uint j = 0; i < game.size(); j++) {
-			p.sety(j);
-			if (game[p] == c) { counter++; }
+		for (uint j = 0; j < game.size(); j++) {
+			Coordinate temp{ i,j };
+			cout << temp;
+			if (game[temp]==c) { counter++; }
 			else { counter = 0; }
 		}
 		if (counter == game.size()) { return true; }
 	}
+	cout << "rows";
 	return false;
 }
 bool TicTacToe::check_colums(char c) {
 	int counter = 0;
-	Coordinate p{ 0, 0 };
 	for (uint i = 0; i < game.size(); i++) {
-		p.sety(i);
-		for (uint j = 0; i < game.size(); j++) {
-			p.setx(j);
-			if (game[p] == c) { counter++; }
+		for (uint j = 0; j < game.size(); j++) {
+			Coordinate temp{ i,j };
+			cout << temp;
+			if (game[temp] == c) { counter++; }
 			else { counter = 0; }
 		}
 		if (counter == game.size()) { return true; }
 	}
+	cout << "colums";
 	return false;
 }
 
 bool TicTacToe::check_angle(char c) {
 	int counter = 0;
 	bool win = false;
-	Coordinate p{ 0, 0 };
 	for (uint i = 0; i < game.size(); i++) {
-		p.setx(i);
-		p.sety(i);
-		if (game[p] == c) { counter++; }
+		Coordinate temp{ i,i };
+		cout << temp;
+		if (game[temp] == c) { counter++; }
 		if (counter == game.size()) { win = true; }
 	}
 	for (uint i = game.size(); i >= 0; i--) {
-		p.setx(i);
-		p.sety(i);
-		if (game[p] == c) { counter++; }
+		Coordinate temp{ i,i };
+		if (game[temp] == c) { counter++; }
 		if (counter == game.size()) { win = true; }
 	}
+	cout << "angle";
 	return win;
 
 }
@@ -79,4 +77,5 @@ void TicTacToe::turnX(Player xPlayer) {
 void TicTacToe::turnY(Player oPlayer) {
 	Coordinate p = oPlayer.play(game);
 	game[p] = oPlayer.myChar;
+	cout << "Turn Y";
 }

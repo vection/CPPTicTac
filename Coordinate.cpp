@@ -13,8 +13,12 @@ unsigned int Coordinate::second() {
 }
 
 void Coordinate::setx(unsigned int xx) {
+	initializer_list<unsigned int> temp ({ xx,y });
+	p = &temp;
 	x = xx;
 }
 void Coordinate::sety(unsigned int yy) {
+	initializer_list<unsigned int> temp ({ x, yy });
+	p = &temp;
 	y = yy;
 }

@@ -23,7 +23,7 @@ public:
 			*x = c;
 		}
 		else { throw IllegalCharException(c); }
-		return c;
+		return *x;
 	}
 
 	operator char() const { return *x; }

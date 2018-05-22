@@ -16,7 +16,7 @@ class Board {
 
 public:
 	char* mat;
-	int length;
+	 int length;
 
 	const unsigned int size() const;
 	Board() {
@@ -25,7 +25,7 @@ public:
 		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
 	}
 	 Board(int num) {
-		length = num;
+		length = (uint)num;
 		mat = new char[num*num];
 		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
 	}
