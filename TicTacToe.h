@@ -7,21 +7,23 @@
 class TicTacToe {
 public:
 	Board game;
-	Player win ;
+	Player* win ;
 
-	void play(Player one, Player two);
+	void play(Player& one, Player& two);
 	bool check_winner(char c);
 	bool check_rows(char c);
 	bool check_colums(char c);
 	bool check_angle(char c);
-	void turnX(Player x);
-	void turnY(Player y);
+	void turnX(Player& x);
+	void turnY(Player& y);
 	TicTacToe(int num) {
 		Board myboard(num);
 		game = myboard;
 	}
 
-	const Player& winner() const { return win; }
+	const Player& winner() const { 
+		return *win; 
+	}
 	Board board() const { return game; }
 
 

@@ -35,7 +35,7 @@ public:
 		int x = p.first();
 		int y = p.second();
 		int a = returnsyntax(x, y);
-		if (a > (length-1)*(length-1)) { 
+		if (a >= (length*length)) { 
 			throw IllegalCoordinateException(x, y); 
 		}
 		
@@ -47,7 +47,7 @@ public:
 		int x = p.first();
 		int y = p.second();
 		int a = returnsyntax(x, y);
-		if (a > (length - 1)*(length - 1)) {
+		if (a >= (length*length)) {
 			throw IllegalCoordinateException(x, y);
 		}
 
@@ -85,5 +85,9 @@ public:
 		}
 		output << p;
 		return output;
+	}
+
+	const void clean() const {
+		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
 	}
 };

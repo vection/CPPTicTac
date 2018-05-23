@@ -9,12 +9,14 @@ using namespace std;
 class Player {
 
 private:
-	string player_name;
+	//string player_name;
 
 public:
 	char myChar;
-	virtual const string  name() const;
-	virtual const Coordinate play(const Board& board);
+	virtual const string  name() const {
+		return "Player";
+	}
+	virtual const Coordinate play(const Board& board)=0;
     const char getChar() const { return myChar; }
    
 };
