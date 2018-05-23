@@ -22,6 +22,7 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer) {
 			gameover = true; 
 			break;
 		}
+		else if (tie_check()) { win = &oPlayer; gameover = true; break; }
 		try {
 			turnY(oPlayer);
 		}
@@ -33,6 +34,7 @@ void TicTacToe::play(Player& xPlayer,Player& oPlayer) {
 			win = &oPlayer; 
 			gameover = true;
 		}
+		else if (tie_check()) { win = &oPlayer; gameover = true; break; }
 	}
 }
 
@@ -110,4 +112,19 @@ void TicTacToe::turnY(Player& oPlayer) {
 		game[p] = oPlayer.myChar;
 	}
 	else { throw "Illegal Move"; }
+}
+
+bool TicTacToe::tie_check() {
+	int counter = 0;
+	Coordinate t{ 0,0 };
+	for (uint i = 0; i < game.size(); i++) {
+		for (uint j = 0; j < game.size(); j++) {
+			t.setx(i);
+			t.sety(j);
+			if (game[t] == '.') {
+				return false;
+			}
+		}
+	}
+	return true;
 }

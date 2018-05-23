@@ -26,7 +26,7 @@ public:
 	}
 	 Board(int num) {
 		length = (uint)num;
-		mat = new char[num*num];
+		mat = new char[(uint)num*num];
 		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
 	}
 

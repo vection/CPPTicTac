@@ -25,6 +25,7 @@ public:
 		return *win; 
 	}
 	Board board() const { return game; }
+	bool tie_check();
 
 
 };
