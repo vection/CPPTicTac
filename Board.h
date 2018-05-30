@@ -1,13 +1,15 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <utility>     
+#include <utility>   
+#include <opencv2/opencv.hpp>
 #include "IllegalCoordinateException.cpp"
 #include "Cell.h"
 #include "Coordinate.h"
+#include "Image.h"
 using namespace std;
 
-#define uint unsigned int
+//#define uint unsigned int
 
 class Board {
 
@@ -89,5 +91,10 @@ public:
 
 	const void clean() const {
 		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
+	}
+
+	void draw(int n) {
+		Image p(n);
+		p.draw(*this);
 	}
 };
