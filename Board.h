@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <utility>   
-#include <opencv2/opencv.hpp>
 #include "IllegalCoordinateException.cpp"
 #include "Cell.h"
 #include "Coordinate.h"
@@ -31,7 +30,6 @@ public:
 		mat = new char[(uint)num*num];
 		for (int i = 0; i < length*length; i++) { mat[i] = '.'; }
 	}
-
 	Cell operator [] (Coordinate p) 
 	{
 		int x = p.first();
@@ -51,6 +49,15 @@ public:
 		int a = returnsyntax(x, y);
 		if (a >= (length*length)) {
 			throw IllegalCoordinateException(x, y);
+		}
+
+		return Cell(&mat[a]);
+
+	}
+	 Cell operator [] (int a) const
+	{
+		if (a >= (length*length)) {
+			throw IllegalCoordinateException(0,0);
 		}
 
 		return Cell(&mat[a]);
@@ -95,6 +102,7 @@ public:
 
 	void draw(int n) {
 		Image p(n);
-		p.draw(*this);
+		string filename = p.createImage(mat, length);
+		cout << filename;
 	}
 };

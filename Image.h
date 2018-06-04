@@ -1,12 +1,13 @@
+#pragma once
 
+#include <iostream>
 #include <fstream>
-#include <cmath>
-#include <chrono>
-#include <thread>
-#include "Board.h"
-using namespace cv;
+#include <string>
+
+using namespace std;
 
 typedef unsigned char uint8_t;
+
 
 struct RGB {
 	uint8_t red, green, blue;
@@ -17,26 +18,19 @@ public:
 
 class Image {
 public:
-	RGB * colors;
-	Mat image;
-	int mypixels;
-	int current_pixel;
-	int pixel_per_object;
+	int pixels;
+	RGB* colors;
+	void Xpaint(int row, int col, int pixels);
+	void Opaint(int row, int col, int pixels);
+	void saveImage(string file);
 
-	void draw(Board& board);
-	void drawX();
-	void drawO();
-	void check(int n);
+	Image(int n);
+	~Image();
+	string createImage(char* board, int size);
+	void createCanvas(int size);
 
-	Image() {
-		mypixels = 0;
-		current_pixel = 0;
-		pixel_per_object = 0;
-	}
-	Image(int pixels) {
-		colors = new RGB[pixels*pixels];
-		mypixels = pixels;
-		current_pixel = 0;
-		image = Mat(cvSize(pixels, pixels), CV_8UC1);
-	}
+	void paintPixelInRed(RGB *rgb);
+	void paintPixelInGreen(RGB *rgb);
+	void paintPixelInBlue(RGB *rgb);
+	void paintPixelInBlack(RGB *rgb);
 };
